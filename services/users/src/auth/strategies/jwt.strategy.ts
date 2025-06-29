@@ -7,6 +7,10 @@ import { PublicUser } from '../types/user.types';
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private prisma: PrismaService) {
+    const jwtSecret = process.env.JWT_SECRET;
+    if (!jwtSecret) {
+      throw new Error('JWT_SECRET is not defined in the environment variables!');
+    }
     super({
       /*
        *Tell Passport how to find the token.
@@ -16,7 +20,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       // Skip checking for expired tokens, Passport will handle it automatically
       ignoreExpiration: false,
       // Provide the secret key so Passport can verify the token's signature.
-      secretOrKey: process.env.JWT_SECRET!,
+      secretOrKey: jwtSecret,
     });
   }
 
