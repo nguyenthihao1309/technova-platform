@@ -2,17 +2,29 @@ version: "3.8"
 
 services:
   postgres_db:
-    image: postgres:15 
+    image: postgres:15
     container_name: technova_postgres
-    restart: always 
+    restart: always
     ports:
-      - "5432:5432" 
+      - "5432:5432"
     environment:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
       POSTGRES_DB: technova_users_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  mongo_db:
+    image: mongo:latest
+    container_name: technova_mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: myuser
+      MONGO_INITDB_ROOT_PASSWORD: mypassword
+    volumes:
+      - mongo_data:/data/db
 
 volumes:
   postgres_data:
+  mongo_data:
