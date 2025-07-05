@@ -1,4 +1,4 @@
-import { PublicUser } from "@/types/user.types";
+import { PublicUser } from "@/types/models.types";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 

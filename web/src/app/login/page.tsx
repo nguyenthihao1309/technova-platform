@@ -1,7 +1,7 @@
 'use client';
 import { fetchWithAuth } from "@/lib/api";
 import { useAuthStore } from "@/stores/auth.store";
-import { PublicUser } from "@/types/user.types";
+import { PublicUser } from "@/types/models.types";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
